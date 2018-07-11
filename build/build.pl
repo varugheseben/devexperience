@@ -19,4 +19,4 @@ if(!defined $configFile || ! -f $configFile){
     exit(1);
 }
 
-require Config::IniFiles;
+use Config::IniFiles;
