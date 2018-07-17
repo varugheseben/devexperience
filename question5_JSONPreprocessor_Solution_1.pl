@@ -90,7 +90,7 @@ sub removeComment{
     my $squareBracketIndex = index($str, "\]", $startIndex);
     my $flowerBracketIndex = index($str, "\}", $startIndex);
 
-    $endIndex = selectEndIndex(selectEndIndex($squareBracketIndex, $flowerBracketIndex), $quoteIndex);
+    my $endIndex = selectEndIndex(selectEndIndex($squareBracketIndex, $flowerBracketIndex), $quoteIndex);
     return $str if ($endIndex == -1);
 
     # Identifying the value Item
