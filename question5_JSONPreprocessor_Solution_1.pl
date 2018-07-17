@@ -59,6 +59,7 @@ exit(0);
 sub removeComments{
     my $dataString = shift;
 
+    # Spliting on Key-Value separator '",'
     my @tokens = split("\",", $dataString);
     foreach my $index(0..$#tokens){
       $tokens[$index] = removeComment($tokens[$index]);
@@ -89,9 +90,7 @@ sub removeComment{
     my $squareBracketIndex = index($str, "\]", $startIndex);
     my $flowerBracketIndex = index($str, "\}", $startIndex);
 
-    my $endIndex = selectEndIndex($squareBracketIndex, $flowerBracketIndex);
-
-    $endIndex = selectEndIndex($endIndex, $quoteIndex);
+    $endIndex = selectEndIndex(selectEndIndex($squareBracketIndex, $flowerBracketIndex), $quoteIndex);
     return $str if ($endIndex == -1);
 
     # Identifying the value Item
